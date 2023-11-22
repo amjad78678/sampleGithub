@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .signup-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+
+      .signup-container input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+
+      .signup-container button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .signup-container img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <h2>Signup</h2>
+      <form id="signupForm">
+        <img id="profileImage" src="#" alt="Profile Image" />
+        <br />
+        <input
+          type="file"
+          accept="image/*"
+          onchange="previewImage()"
+          id="imageInput"
+        />
+        <br />
+        <input type="text" id="username" placeholder="Username" required />
+        <br />
+        <input type="password" id="password" placeholder="Password" required />
+        <br />
+        <button type="button" onclick="signup()">Signup</button>
+      </form>
+    </div>
+
+    <script>
+      function previewImage() {
+        var fileInput = document.getElementById('imageInput');
+        var profileImage = document.getElementById('profileImage');
+        var file = fileInput.files[0];
+
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            profileImage.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      function signup() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // You would typically send a request to the backend for user registration here.
+        // For simplicity, let's assume a hardcoded username and password.
+        if (username && password) {
+          alert('Signup successful!');
+        } else {
+          alert('Please fill out all fields.');
+        }
+      }
+    </script>
+  </body>
+</html>
